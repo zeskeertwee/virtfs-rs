@@ -1,5 +1,5 @@
 /target
-vach-benchmarks/target
+/crates/vach-benchmarks/target
 
 .vscode
 .idea
@@ -9,10 +9,8 @@ perf.data.old
 workspace.code-workspace
 .cargo/config.toml
 
-# Test Data
-vach/test_data/encrypted/target.vach
-vach/test_data/signed/target.vach
-vach/test_data/simple/target.vach
+# Test Archives
+/crates/vach/test_data/*
 
 # Cargo
 .cargo

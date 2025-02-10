@@ -18,10 +18,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Build
-        run: cargo build
-      - name: Run tests
-        run: cargo test --verbose -- --test-threads=1 --nocapture
+      - name: Build Archives
+        run: cargo test -p vach --features default --features crypto --features compression -- tests::builder_no_signature tests::builder_with_signature tests::builder_with_encryption --nocapture
+      - name: Test Against Archives
+        run: cargo test -p vach --features default --features crypto --features compression -- --skip builder_ --nocapture
         env:
           RUST_LOG: trace
   multithreaded-tests:
@@ -32,9 +32,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Build
-        run: cargo build
-      - name: Run tests
-        run: cargo test -p vach --all-features -- --test-threads=1 --nocapture
+      - name: Build Archives
+        run: cargo test -p vach --features all -- tests::builder_no_signature tests::builder_with_signature tests::builder_with_encryption --nocapture
+      - name: Test Against Archives
+        run: cargo test -p vach --features all -- --skip builder_ --nocapture
         env:
           RUST_LOG: trace

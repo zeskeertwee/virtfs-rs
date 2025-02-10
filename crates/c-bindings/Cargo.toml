@@ -1,0 +1,24 @@
+[package]
+name = "c-bindings"
+version = "0.1.0"
+edition = "2021"
+authors = ["Newton Toto <nyachiengatoto@gmail.com>"]
+license = "MIT"
+description = "C Bindings for vach, a pure Rust archive format"
+include = ["src/*", "Cargo.toml"]
+repository = "https://github.com/zeskeertwee/vach"
+
+[lib]
+name = "vach"
+crate-type = ["cdylib"]
+
+[dependencies]
+vach = { path = "../vach", features = [
+	"archive",
+	"builder",
+	"crypto",
+	"compression",
+], default-features = false }
+
+[build-dependencies]
+cbindgen = "*"

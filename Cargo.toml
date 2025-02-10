@@ -1,6 +1,14 @@
 [workspace]
-members = ["vach", "vach-cli", "vach-benchmarks"]
+members = ["./crates/*"]
 resolver = "2"
 
 [profile.bench]
 debug = true
+
+[profile.bindings]
+inherits = "release"
+opt-level = 3
+strip = true
+lto = true
+codegen-units = 1
+panic = "abort"
